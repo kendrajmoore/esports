@@ -10,7 +10,7 @@ const db = {}
 // });
 if (process.env.production) {
   // the application is executed on Heroku ... use the postgres database
-  sequelize = new Sequelize(process.env.PROD_DATABASE_URL, {
+  sequelize = new Sequelize(DATABASE_URL, {
     dialect:  'postgres',
     protocol: 'postgres',
     port:     match[4],
