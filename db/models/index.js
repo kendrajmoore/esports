@@ -4,10 +4,26 @@ const Sequelize = require('sequelize')
 const config = require('../config/config')
 const db = {}
 
-const sequelize = new Sequelize('esports', null, null, {
-  host: 'localhost',
-  dialect: 'postgres' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-});
+// const sequelize = new Sequelize('esports', null, null, {
+//   host: 'localhost',
+//   dialect: 'postgres' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+// });
+if (process.env.production) {
+  // the application is executed on Heroku ... use the postgres database
+  sequelize = new Sequelize(process.env.PROD_DATABASE_URL, {
+    dialect:  'postgres',
+    protocol: 'postgres',
+    port:     match[4],
+    host:     match[3],
+    logging:  true //false
+  })
+} else {
+  // the application is executed on the local machine ... use mysql
+  sequelize = new Sequelize('esports', null, null, {
+    host: 'localhost',
+    dialect: 'postgres'
+  })
+}
 
 fs
   .readdirSync(__dirname)

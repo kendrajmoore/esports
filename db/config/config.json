@@ -14,7 +14,7 @@
     "dialect": "postgres"
   },
   "production": {
-    "use_env_variable": "",
+    "use_env_variable": "postgresql-angular-10465",
     "dialect": "postgres",
     "dialectOptions": {
        "ssl": {
