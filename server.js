@@ -48,6 +48,11 @@ app.engine('handlebars', exphbs({
 
 app.set('view engine', 'handlebars');
   
+app.get("/", (req, res) => {
+  res.render("homepage.handlebars");
+});
+
+
 // Tell the app what port to listen on
 app.listen(port, () => {
   console.log('App listening on port 3000!')
