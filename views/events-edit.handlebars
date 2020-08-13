@@ -1,0 +1,44 @@
+<!-- views/events-edit.handlebars -->
+<div class="row mt-4">
+  <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                <h3>Update Event</h3>
+            </div>
+            <div class="card-text">
+                <form action="/events/{{event.id}}?_method=PUT" method="post">
+                    <div class="form-group">
+                        <label for="Event Name">Event Name</label>
+                        <input name="eventName" class="form-control" placeholder="" value="{{event.eventName}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="imgUrl">Image Url</label>
+                        <input name="imgUrl" class="form-control" placeholder="" value="{{event.imgUrl}}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="game">Image Url</label>
+                        <input name="game" class="form-control" placeholder="" value="{{event.game}}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input name="location" class="form-control" placeholder="" value="{{event.location}}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                        <textarea name="desc" class="form-control" placeholder="A description of your event.">{{event.desc}}</textarea>
+                    </div>
+                    <div class="text-right">
+                        <a href="/events/{{event.id}}" class='text-muted mr-2'>Cancel</a>
+                        <button type="submit" class="btn btn-primary" name="button">Update</button>
+                    </div>
+                    </form>
+                    <form action="/events/{{event.id}}?_method=DELETE" method="POST">
+                       <button type="submit" class='btn btn-danger'>Delete</button>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
