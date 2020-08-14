@@ -2,13 +2,12 @@
 
 <img src={{event.imgUrl}} />
 <div class="container">
-     <h1>Event: {{event.eventName}}</h1>
-     <h4>Details: {{event.desc}}</h4>
-     <h4>Game: {{event.game}}</h4>
-     <h4>Location: {{event.location}}</h4>
+     <h3>Event: {{event.eventName}}</h3>
+     <h6>Details: {{event.desc}}</h6>
+     <h6>Game: {{event.game}}</h6>
+     <h6>Location: {{event.location}}</h6>
      <div class="text-right">
-          <a href="/events/{{event.id}}/edit">Edit</a>
-           <a href="/events/{{event.id}}/rsvps/new" class="btn btn-primary btn-sm">RSVP</a>
+          <a href="/events/{{event.id}}/edit" class="btn btn-info btn-sm">Edit</a>
      </div>
 </div>
 <div class="col-lg-4 offset-lg-1">
@@ -17,11 +16,18 @@
         <a href="/events/{{event.id}}/rsvps/new" class="btn btn-primary btn-sm">RSVP</a>
     </div>
 
-    <div class="list-group mt-4">
-        {{#each event.Rsvps}}
-        <div class="list-group-item">
+      <div class="list-group mt-4">
+      {{#each event.Rsvps}}
+        <div class="list-group-item clearfix">
+          <div class="float-left">
             {{this.name}}
+          </div>
+          <div class="float-right">
+            <form class="form-inline" action="/events/{{../event.id}}/rsvps/{{this.id}}?_method=DELETE" method="post">
+              <button type="submit" class="btn btn-link btn-sm">Remove</button>
+            </form>
+          </div>
         </div>
-        {{/each}}
+      {{/each}}
     </div>
 </div>
