@@ -6,9 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     game: DataTypes.STRING,
     location: DataTypes.STRING,
     imgUrl: DataTypes.STRING 
-  }, {});
+  }, {
+    freezeTableName: true,
+    tableName: 'Events',
+  });
   Event.associate = function(models) {
     // associations can be defined here
+    Event.hasMany(models.Rsvp);
   };
   return Event;
 };

@@ -36,6 +36,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 require('./controllers/events')(app, models);
+require('./controllers/rsvps')(app, models);
 
   
 // When connecting Handlebars to the Express app...
@@ -51,6 +52,12 @@ app.set('view engine', 'handlebars');
 app.get("/", (req, res) => {
   res.render("homepage.handlebars");
 });
+
+app.get("*", (req, res) => {
+  res.json({ message: "404" });
+});
+
+
 
 
 // Tell the app what port to listen on

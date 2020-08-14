@@ -1,10 +1,27 @@
 <!-- views/events-show.handlebars -->
 
 <img src={{event.imgUrl}} />
-<h1>{{event.eventName}}</h1>
-<h2>{{event.desc}}</h2>
-<h2>{{event.game}}</h2>
-<h2>{{event.location}}</h2>
- <div class="text-right">
-      <a href="/events/{{event.id}}/edit">Edit</a>
- </div>
+<div class="container">
+     <h1>Event: {{event.eventName}}</h1>
+     <h4>Details: {{event.desc}}</h4>
+     <h4>Game: {{event.game}}</h4>
+     <h4>Location: {{event.location}}</h4>
+     <div class="text-right">
+          <a href="/events/{{event.id}}/edit">Edit</a>
+           <a href="/events/{{event.id}}/rsvps/new" class="btn btn-primary btn-sm">RSVP</a>
+     </div>
+</div>
+<div class="col-lg-4 offset-lg-1">
+    <div class="d-flex justify-content-between">
+        <b>RSVPs ({{event.Rsvps.length}})</b>
+        <a href="/events/{{event.id}}/rsvps/new" class="btn btn-primary btn-sm">RSVP</a>
+    </div>
+
+    <div class="list-group mt-4">
+        {{#each event.Rsvps}}
+        <div class="list-group-item">
+            {{this.name}}
+        </div>
+        {{/each}}
+    </div>
+</div>
